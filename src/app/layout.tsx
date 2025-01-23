@@ -1,17 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
+import { Theme } from '@radix-ui/themes';
 
-import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin']
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin']
-});
+import '@radix-ui/themes/styles.css';
 
 export const metadata: Metadata = {
   title: 'pokeatlas'
@@ -23,8 +14,14 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang='en' suppressHydrationWarning>
+      <body style={{ margin: 0 }}>
+        <ThemeProvider attribute='class'>
+          <Theme appearance='inherit' accentColor='gold' grayColor='olive' panelBackground='solid'>
+            {children}
+          </Theme>
+        </ThemeProvider>
+      </body>
     </html>
   );
 };
