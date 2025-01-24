@@ -1,5 +1,6 @@
-import { Flex, Container, Heading } from '@radix-ui/themes';
+import { Flex, Container } from '@radix-ui/themes';
 
+import { Title } from '~/components/title';
 import { SearchForm } from '~/components/search-form';
 
 interface Props {
@@ -15,9 +16,7 @@ const PokemonList = async ({ searchParams }: Props) => {
     <Container size='2' px='6' py='4'>
       <Flex direction='column' gap='5'>
         <Flex justify='between' align='center' gap='4'>
-          <Heading size='4' color='gold'>
-            pokeatlas
-          </Heading>
+          <Title size='small' isLink />
 
           <SearchForm size='small' defaultSearch={processedSearch} />
         </Flex>
