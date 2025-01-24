@@ -5,9 +5,10 @@ import { TextField, Button } from '@radix-ui/themes';
 interface Props {
   size?: 'normal' | 'small';
   defaultSearch?: string;
+  autoFocus?: boolean;
 }
 
-export const SearchForm = ({ size = 'normal', defaultSearch }: Props) => {
+export const SearchForm = ({ size = 'normal', defaultSearch, autoFocus }: Props) => {
   const searchPokemon = async (formData: FormData) => {
     'use server';
 
@@ -25,7 +26,7 @@ export const SearchForm = ({ size = 'normal', defaultSearch }: Props) => {
         placeholder='Search pokemon...'
         defaultValue={defaultSearch}
         size={size === 'normal' ? '3' : '2'}
-        autoFocus
+        autoFocus={autoFocus}
       >
         <TextField.Slot>
           <MagnifyingGlassIcon height='16' width='16' />
