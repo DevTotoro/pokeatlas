@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
@@ -9,11 +10,7 @@ export const metadata: Metadata = {
   title: 'pokeatlas'
 };
 
-const RootLayout = ({
-  children
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+const RootLayout = ({ children }: Readonly<PropsWithChildren>) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <body style={{ margin: 0 }}>
