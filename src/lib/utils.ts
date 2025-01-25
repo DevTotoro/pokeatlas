@@ -13,3 +13,7 @@ export const getUrlWithQueryParams = (url: string, params?: Record<string, strin
 
   return urlParams.toString() ? `${url}?${urlParams.toString()}` : url;
 };
+
+export const capitalizeFirstLetter = (string: string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};

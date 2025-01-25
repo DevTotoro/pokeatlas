@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Avatar, Card, Flex, Text } from '@radix-ui/themes';
 
 import type { Pokemon } from '~/lib/types';
+import { capitalizeFirstLetter } from '~/lib/utils';
 
 interface Props {
   pokemon: Pokemon;
@@ -21,12 +22,12 @@ export const PokemonCard = ({ pokemon }: Props) => {
             )}
 
             <Text size='3' weight='bold'>
-              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+              {capitalizeFirstLetter(pokemon.name)}
             </Text>
           </Flex>
 
           <Flex gap='4' align='center'>
-            <Text size='2'>{pokemon.types.map((type) => type.charAt(0).toUpperCase() + type.slice(1)).join(', ')}</Text>
+            <Text size='2'>{pokemon.types.map(capitalizeFirstLetter).join(', ')}</Text>
 
             <Text size='2' color='gray'>
               #{pokemon.id}
