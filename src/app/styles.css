@@ -1,0 +1,7 @@
+/* https://www.radix-ui.com/themes/docs/theme/breakpoints#available-sizes */
+
+@media screen and (max-width: 520px) {
+  .hide-on-viewport-xs {
+    display: none;
+  }
+}

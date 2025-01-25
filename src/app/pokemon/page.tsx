@@ -9,9 +9,11 @@ interface Props {
 }
 
 const PokemonListPage = async ({ searchParams }: Props) => {
-  const { search } = await searchParams;
+  const { search, offset, limit } = await searchParams;
 
   const processedSearch = Array.isArray(search) ? search.join(',') : search;
+  const processedOffset = offset && !isNaN(Number(offset)) ? Number(offset) : 0;
+  const processedLimit = limit && !isNaN(Number(limit)) ? Number(limit) : 20;
 
   return (
     <Container size='2' px='6' py='4'>
@@ -22,7 +24,7 @@ const PokemonListPage = async ({ searchParams }: Props) => {
           <SearchForm size='small' defaultSearch={processedSearch} />
         </Flex>
 
-        <PokemonList search={processedSearch} />
+        <PokemonList search={processedSearch} offset={processedOffset} limit={processedLimit} />
       </Flex>
     </Container>
   );

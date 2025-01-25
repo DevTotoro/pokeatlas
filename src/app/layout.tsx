@@ -3,6 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
 
 import '@radix-ui/themes/styles.css';
+import './styles.css';
 
 export const metadata: Metadata = {
   title: 'pokeatlas'
