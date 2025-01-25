@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { Avatar, Flex, Heading, Text } from '@radix-ui/themes';
 
 import { capitalizeFirstLetter } from '~/lib/utils';
+import { PokemonTypeChart } from '~/components/pokemon-type-chart';
 
 import POKEMON_LIST from '~/data/pokemon.json';
 
@@ -38,7 +39,7 @@ const PokemonPage = async ({ params }: Props) => {
   }
 
   return (
-    <Flex direction='column' gap='6' align='center'>
+    <Flex direction='column' gap='5' align='center'>
       <Flex direction='column' gap='3' align='center'>
         {pokemon.spriteUrl ? (
           <Image src={pokemon.spriteUrl} alt={pokemon.name} width={128} height={128} />
@@ -57,7 +58,11 @@ const PokemonPage = async ({ params }: Props) => {
         </Flex>
       </Flex>
 
-      <Text size='4'>{pokemon.types.map(capitalizeFirstLetter).join(', ')}</Text>
+      <Text size='4' weight='bold'>
+        {pokemon.types.map(capitalizeFirstLetter).join(', ')}
+      </Text>
+
+      <PokemonTypeChart types={pokemon.types} />
     </Flex>
   );
 };
