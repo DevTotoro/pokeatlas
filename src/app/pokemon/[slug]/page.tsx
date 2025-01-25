@@ -12,6 +12,18 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const generateStaticParams = async () => {
+  const pokemonById = POKEMON_LIST.map((pokemon) => ({
+    slug: pokemon.id.toString()
+  }));
+
+  const pokemonByName = POKEMON_LIST.map((pokemon) => ({
+    slug: pokemon.name
+  }));
+
+  return [...pokemonById, ...pokemonByName];
+};
+
 /**
  * Find a Pokemon by either its ID or name.
  */
